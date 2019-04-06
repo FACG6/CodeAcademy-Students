@@ -1,17 +1,13 @@
 import React from 'react';
-import './style.css'
+import { Link } from 'react-router-dom';
+import './style.css';
 
-class Nav extends React.Component {
-    render() {
-
-        return (
-            <div className='nav'>
-
-                <img src={'https://gazaskygeeks.com/wp-content/uploads/2018/08/gsg-website-logo-colored-280-50.png'} alt='GazaSkyGeeks' className='img' />
-                
-            </div>
-        )
-    }
-
+function Navbar(){
+    return (
+        <header>
+        <img src={'https://gazaskygeeks.com/wp-content/uploads/2018/08/gsg-website-logo-colored-280-50.png'} alt='GazaSkyGeeks' className='img'/>
+        <Link to='/'>Home</Link> | <Link to='/students'>Students</Link>
+        </header>
+    )
 }
-export default Nav;
+export default Navbar;
