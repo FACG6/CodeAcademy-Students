@@ -5,25 +5,64 @@ import Students from './Component/Students/index'
 import './App.css';
 import Nav from './Component/Nav/index'
 import StudentInfo from './Component/StudentInfo/index'
-
+import token from './token';
 
 class App extends Component {
   state = {
     studntsData: [],
-    user:{},
+    user: [],
+  }
+  componentDidMount() {
+    fetch(`https://api.github.com/orgs/facg6/members?access_token=${token}`)
+      .then(res => res.json())
+      .then(res => {
+        const users = [
+          "AbdallahAmmar96",
+          "AhmedAl-Almi",
+          "alaabadra",
+          "aminalakhsham",
+          "Angham116",
+          "Anies12",
+          "AymanAlqoqa",
+          "denaHS",
+          "engshorouq",
+          "Fatmasiam",
+          "IsraaSulaiman",
+          "Jamalat-shamallakh",
+          "KhaderMurtaja",
+          "mohammedmh",
+          "naremanhilles",
+          "ahmedisam99"
+        ]
+        if (res) {
+          const result = res.filter((x) => {
+            for (let i = 0; i < users.length; i++) {
+              if (x.login === users[i]) {
+                return true;
+              }
+            }
+          })
+          this.setState({ studntsData: result })
+        }
+      }).catch(err => {
+        throw new Error(`fetch getUserData failed ${err}`)})
   }
 
-  addUsers = (received) => {
-    this.setState({ studntsData: received });
-  }
   rnder = (rcevdId) => {
-    this.setState({ user: this.state.users.map(user => {
-      if(user.id === rcevdId ){
-        return user;
-      }
-    }) })
-}
+    this.setState({
+      user: this.state.studntsData.map(user => {
+        if (user.id === rcevdId) {
+          return user;
+        }else{
+
+        }
+      }).filter(x => x),
+    })
+  }
   render() {
+    if (!this.state.studntsData) {
+      return <h3>Loading</h3>;
+    }
     return (
       <Router>
         <div className="App">
@@ -38,10 +77,10 @@ class App extends Component {
           } />
           <Route path='/studentInfo'>
             <React.Fragment>
-            <div>
-              <Nav />
-              <StudentInfo />
-            </div>
+              <div>
+                <Nav />
+                <StudentInfo userInfo={this.state.user} />
+              </div>
             </React.Fragment>
           </Route>
         </div>
