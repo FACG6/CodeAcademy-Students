@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 class Student extends React.Component {
   render() {
-    console.log(546451651220);
     const { id, avatar_url } = this.props.individual;
     return (
       <React.Fragment>
