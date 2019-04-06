@@ -1,0 +1,40 @@
+.home-page{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://gazaskygeeks.com/wp-content/uploads/2018/04/IMG_8971.jpg");
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center
+ }
+ .container{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: center;
+     height: 25%;
+     color: white;
+ }
+ .container--text{
+     font-size: 35px;
+     letter-spacing: 5px;
+ }
+ .container-buttons{
+     display: flex;
+     width: 80%;
+     justify-content:space-between
+ 
+ }
+ .button{
+     width: 45%;
+     height: 57px;
+     border-radius: 24px;
+     background-color: #E3740E;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+ .links{
+     text-decoration: none;
+     color: white;
+     font-size: 20px;
+     letter-spacing: 1px;
+ }
