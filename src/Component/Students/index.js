@@ -1,6 +1,5 @@
 import React from 'react';
-import Student from '../Student/index';
-
+import Student  from '../Student/index'
 class Students extends React.Component {
     state = {
         users: [],
@@ -17,17 +16,14 @@ class Students extends React.Component {
                     }
                 })
                 this.setState({ users: result })
-                console.log(98787979, this.state.users)
             }
         })
     }
-
     render() {
         return this.state.users.map((stdnt) => (
                 <Student individual={stdnt} user={this.users}  renderStudent={this.props.rnder} />
             )
             )
-        
     }
 }
 export default Students;

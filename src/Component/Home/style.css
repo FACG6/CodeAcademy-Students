@@ -16,6 +16,7 @@
  .container--text{
      font-size: 35px;
      letter-spacing: 5px;
+     color: white;
  }
  .container-buttons{
      display: flex;
