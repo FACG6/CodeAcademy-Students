@@ -1,6 +1,5 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom';
-
+import React from 'react';
+import { Link } from 'react-router-dom';
 class StudentInfo extends React.Component {
   render() {
     if (this.props.userInfo[0]) {
@@ -12,7 +11,7 @@ class StudentInfo extends React.Component {
         </div>
       )
     }else{
-    return <h3>Select a Student to view..</h3>;
+    return <h3>click <Link to='/students'>here</Link> to select a Student to view..</h3>;
    } }
 }
 export default StudentInfo;

@@ -75,14 +75,14 @@ class App extends Component {
               </React.Fragment>
             )
           } />
-          <Route path='/studentInfo'>
+          <Route path='/studentInfo' render={
             <React.Fragment>
               <div>
                 <Nav />
                 <StudentInfo userInfo={this.state.user} />
               </div>
             </React.Fragment>
-          </Route>
+           } />
         </div>
       </Router>
     );
