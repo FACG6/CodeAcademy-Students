@@ -44,8 +44,9 @@ class App extends Component {
           })
           this.setState({ studntsData: result })
         }
-      }).catch(err => {
-        throw new Error(`fetch getUserData failed ${err}`)})
+      }).catch(() => {
+        throw new Error(`Error, reload the page..`)
+      })
   }
 
   rnder = (rcevdId) => {
@@ -53,7 +54,7 @@ class App extends Component {
       user: this.state.studntsData.map(user => {
         if (user.id === rcevdId) {
           return user;
-        }else{
+        } else {
 
         }
       }).filter(x => x),
@@ -68,21 +69,21 @@ class App extends Component {
         <div className="App">
           <Route exact path='/' component={Home} />
           <Route path='/students' render={
-            elements => (
+            () => (
               <React.Fragment>
                 <Nav />
                 <Students users={this.state.studntsData} addUsers={this.addUsers} rnder={this.rnder} />
               </React.Fragment>
             )
           } />
-          <Route path='/studentInfo' render={
+          <Route path='/studentInfo' render={() => (
             <React.Fragment>
               <div>
                 <Nav />
                 <StudentInfo userInfo={this.state.user} />
               </div>
             </React.Fragment>
-           } />
+          )} />
         </div>
       </Router>
     );
