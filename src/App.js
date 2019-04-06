@@ -7,9 +7,20 @@ import './App.css';
 
 class App extends Component {
   state = {
-    studntsData:[],
+    studntsData: [],
+    user:{},
   }
-  
+
+  addUsers = (received) => {
+    this.setState({ studntsData: received });
+  }
+  rnder = (rcevdId) => {
+    this.setState({ user: this.state.users.map(user => {
+      if(user.id === rcevdId ){
+        return user;
+      }
+    }) })
+}
   render() {
     return (
       <Router>
@@ -19,10 +30,15 @@ class App extends Component {
             elements => (
               <React.Fragment>
                 <Navbar />
-                <Students />
+                <Students users={this.state.studntsData} addUsers={this.addUsers} rnder={this.rnder} />
               </React.Fragment>
             )
           } />
+          <Route path='/studentInfo'>
+            <React.Fragment>
+              
+            </React.Fragment>
+          </Route>
         </div>
       </Router>
     );

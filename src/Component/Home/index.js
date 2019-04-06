@@ -1,15 +1,25 @@
 import React from 'react';
-import './style.css';
+import {Link } from 'react-router-dom'
+import "./style.css";
 class Home extends React.Component {
+    render() {
+        return (
+            <div className='home-page'>
+                <div className='container'>
+                    <div className="container--text">Gaza Sky Geeks  Code Academy</div>
+                    <div className='container-buttons'>
+                        <div className="button">
+                            <Link to='/students' className='links'>Current Cohort</Link>
+                        </div>
+                        <div className="button">
+                            <a href='https://gazaskygeeks.com/code/' className='links'>Code Academy</a>
+                        </div>
+                    </div>
 
-    render(){
-        return(
-        <div className='Img'>
-        <button className='button'>Current Cohort</button>
-        <button className='button'>CoceAcademy</button>
-        </div>
+                </div>
+            </div>
         )
     }
-}
 
+}
 export default Home;

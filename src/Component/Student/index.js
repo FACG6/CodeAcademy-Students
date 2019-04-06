@@ -1,21 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import getStudent from '../helpers/getStudent';
 
-class Students extends React.Component{
-    state = {
-        users :[],
-    }
-    getStudents = () => {
-        fetch('https://api.github.com/orgs/facg6/members?access_token=3ef9f57c5e5505ba2bc016fb7c6ff4c08dd5d1fc').then(res => res.json()).then(res => this.setState(
-            {users:res} ))
-            console.log(this.state.users);
-    }
-    render(){
-        return(
-            <div>
-            <h1>Studedtdyents</h1>
-            <button onChange={this.getStudents}>button</button>
-        </div>
-            )
-    }
+
+class Student extends React.Component {
+  render() {
+    console.log(546451651220);
+    const { id } = this.props.individual;
+    return (
+      <React.Fragment>
+      <div>
+        <button onChange={this.props.renderStudent.bind(this, id)}>{<Link to='/studentInfo'>Link</Link> }</button>
+      </div>
+      </React.Fragment>
+    )
+  }
 }
-export default Students;
+export default Student;
