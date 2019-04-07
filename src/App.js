@@ -41,10 +41,10 @@ class App extends Component {
         if (res) {
           const result = res.filter((x) => {
             for (let i = 0; i < users.length; i++) {
-              if (x.login === users[i]) {
+              if (x.login === users[i]) 
                 return true;
-              }
             }
+          
           })
           this.setState({ studntsData: result })
         }

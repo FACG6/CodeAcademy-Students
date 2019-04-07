@@ -36,8 +36,8 @@ class StudentInfo extends React.Component {
   }
 
   render() {
-    if (this.props.userInfo[0]) {
-      const { login, avatar_url, organizations_url, repos_url, subscriptions_url} = this.props.userInfo[0];
+    if (this.props.userInfo) {
+      const { login, avatar_url, followers_url, following_url, organizations_url, repos_url, subscriptions_url, url } = this.props.userInfo;
       return (
         <div>
           <h2>{login}</h2>
