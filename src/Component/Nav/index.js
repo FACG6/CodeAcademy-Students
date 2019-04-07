@@ -11,7 +11,7 @@ function Navbar(){
         <Link to='/'>Home</Link> |
          <Link to='/students'>
          FACG
-        <img src="https://avatars3.githubusercontent.com/u/37267794?s=200&v=4"  className="img--facg"/>
+        <img src="https://avatars3.githubusercontent.com/u/37267794?s=200&v=4"  className="img--facg" alt="githubusercontent"/>
          Students</Link>
        </div>
         </div>
