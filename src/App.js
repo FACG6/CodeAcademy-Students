@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './Component/Home/index';
 import Students from './Component/Students/index'
 import './App.css';
 import Nav from './Component/Nav/index'
 import StudentInfo from './Component/StudentInfo/index'
-import token from './token';
+import getStudents from './Component/helpers/getStudent';
+import Errorpage from './Component/Errorpage/index';
+import { Redirect } from 'react-router-dom';
+require('dotenv').config();
 
+const token = process.env.REACT_APP_TOKEN;
 class App extends Component {
   state = {
     studntsData: [],
     user: [],
+    error: false,
   }
   componentDidMount() {
-    fetch(`https://api.github.com/orgs/facg6/members?access_token=${token}`)
+    console.log('Token',token)
+    getStudents(`https://api.github.com/orgs/facg6/members?access_token=${token}`)
       .then(res => res.json())
       .then(res => {
         const users = [
@@ -44,8 +50,10 @@ class App extends Component {
           })
           this.setState({ studntsData: result })
         }
-      }).catch(() => {
-        throw new Error(`Error, reload the page..`)
+      })
+      .catch(() => {
+        console.log(`Error, reload the page..`);
+        return this.setState({ error: true });
       })
   }
 
@@ -60,30 +68,42 @@ class App extends Component {
       }).filter(x => x),
     })
   }
+  redirct = () => {
+    if (this.state.error) {
+      this.setState({ error: false });
+      return <Redirect to='/Errorpage' />;
+  }
+}
+
   render() {
     if (!this.state.studntsData) {
       return <h3>Loading</h3>;
     }
+    this.redirct()
     return (
       <Router>
         <div className="App">
-          <Route exact path='/' component={Home} />
-          <Route path='/students' render={
-            () => (
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/students' render={
+              () => (
+                <React.Fragment>
+                  <Nav />
+                  <Students users={this.state.studntsData} rnder={this.rnder} />
+                </React.Fragment>
+              )
+            } />
+            <Route path='/studentInfo' render={() => (
               <React.Fragment>
-                <Nav />
-                <Students users={this.state.studntsData} rnder={this.rnder} />
+                <div>
+                  <Nav />
+                  <StudentInfo userInfo={this.state.user} />
+                </div>
               </React.Fragment>
-            )
-          } />
-          <Route path='/studentInfo' render={() => (
-            <React.Fragment>
-              <div>
-                <Nav />
-                <StudentInfo userInfo={this.state.user} />
-              </div>
-            </React.Fragment>
-          )} />
+            )} />
+            <Route path='/Errorpage' component={Errorpage} />
+            <Route render={() => (<Redirect to='/Errorpage' />)} />
+          </Switch>
         </div>
       </Router>
     );

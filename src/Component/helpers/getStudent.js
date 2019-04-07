@@ -1,8 +1,16 @@
-import React from 'react';
+// import token from '../../token';
+// const token=require('webpack')
+function getStudents(url) {
+ return fetch(`${url}`)
+    .then(res => {
 
-function getStudent() {
-    
+      if (res.status !== 200) {
+        throw new Error(`Error, request failed, reload the page..`)
+      } else {
+        return res;
+      }
+    })
 }
 
 
-export default getStudent;
+export default getStudents;
