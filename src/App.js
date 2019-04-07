@@ -37,10 +37,10 @@ class App extends Component {
         if (res) {
           const result = res.filter((x) => {
             for (let i = 0; i < users.length; i++) {
-              if (x.login === users[i]) {
+              if (x.login === users[i]) 
                 return true;
-              }
             }
+          
           })
           this.setState({ studntsData: result })
         }
@@ -72,7 +72,7 @@ class App extends Component {
             () => (
               <React.Fragment>
                 <Nav />
-                <Students users={this.state.studntsData} addUsers={this.addUsers} rnder={this.rnder} />
+                <Students users={this.state.studntsData} rnder={this.rnder} />
               </React.Fragment>
             )
           } />

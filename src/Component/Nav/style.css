@@ -4,4 +4,19 @@
 .img{
     width: 140px;
     height: 25.5px;
+    margin-left: 33px
+}
+.Nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #C4C4C4;
+    margin-bottom: 40px;
+    min-height: 10px;
+
+}
+.img--facg{
+    width: 30px;
+    height: 19px;
+    margin: 0px 5px;
 }
