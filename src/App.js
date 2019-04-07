@@ -8,8 +8,9 @@ import StudentInfo from './Component/StudentInfo/index'
 import getStudents from './Component/helpers/getStudent';
 import Errorpage from './Component/Errorpage/index';
 import { Redirect } from 'react-router-dom';
+require('dotenv').config();
 
-
+const token = process.env.REACT_APP_TOKEN;
 class App extends Component {
   state = {
     studntsData: [],
@@ -17,7 +18,8 @@ class App extends Component {
     error: false,
   }
   componentDidMount() {
-    getStudents(`https://api.github.com/orgs/facg6/members`)
+    console.log('Token',token)
+    getStudents(`https://api.github.com/orgs/facg6/members?access_token=${token}`)
       .then(res => res.json())
       .then(res => {
         const users = [

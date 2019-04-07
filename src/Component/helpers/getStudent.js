@@ -1,8 +1,9 @@
-import token from '../../token';
-
+// import token from '../../token';
+// const token=require('webpack')
 function getStudents(url) {
- return fetch(`${url}?access_token=${token}`)
+ return fetch(`${url}`)
     .then(res => {
+
       if (res.status !== 200) {
         throw new Error(`Error, request failed, reload the page..`)
       } else {
