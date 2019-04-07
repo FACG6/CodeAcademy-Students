@@ -11,6 +11,14 @@
     height: 100vh;
     margin-bottom: 20px;
 }
+.current--cohort-container{
+    width: 40%;
+    background: rgba(61,97,112,.97);
+    margin-bottom: 26px;
+    border-radius: 0px 100px 100px 0px;
+    color: white;
+}
 .current--cohort-text{
-    
+    margin-left: -70px;
+    text-decoration: underline;
 }

@@ -8,8 +8,8 @@ class Students extends React.Component {
     return (
       <React.Fragment>
         <div className="users--container">
-        <div className="current--cohort-text">
-        <h1>Current Cohort Students :</h1>
+        <div className="current--cohort-container">
+        <h1 className="current--cohort-text">Current Cohort Students :</h1>
         </div>
         <div className="students">
           {this.props.users.map((stdnt) => (
