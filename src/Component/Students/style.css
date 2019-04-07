@@ -1,0 +1,16 @@
+.users--container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 50px
+}
+.students{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 100vh;
+    margin-bottom: 20px;
+}
+.current--cohort-text{
+    
+}

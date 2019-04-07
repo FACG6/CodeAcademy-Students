@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './style.css'
 
 class Student extends React.Component {  
   render() {
-    const {login, id, avatar_url } = this.props.individual;
+    const {login, id, avatar_url } = this.props
     return (
       <React.Fragment>
-        <div>
-          <h3>{login}</h3>
-          <img src={avatar_url} alt='Student avatar' />
-          <button onClick={this.props.renderStudent.bind(this, id)}>
-            {<Link to='/studentInfo'>View</Link>}
+        <div className="user-container">
+          <img src={avatar_url} alt='Student avatar' className="studen-img" />
+          <p className="login-name">{login}</p>
+          <button onClick={this.props.renderStudent.bind(this,id)} className="view-button">
+            {<Link to='/studentInfo' className="view-link">View</Link>}
           </button>
         </div>
       </React.Fragment>

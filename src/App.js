@@ -72,7 +72,7 @@ class App extends Component {
             () => (
               <React.Fragment>
                 <Nav />
-                <Students users={this.state.studntsData} addUsers={this.addUsers} rnder={this.rnder} />
+                <Students users={this.state.studntsData} rnder={this.rnder} />
               </React.Fragment>
             )
           } />
