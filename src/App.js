@@ -101,7 +101,12 @@ class App extends Component {
             )} /><Route path='/NotFound' render={() => (
               <h1>Page not found</h1>
             )} />
-            <Route path='/Errorpage' component={Errorpage} />
+            <Route path='/Errorpage' render={() => (
+               <React.Fragment>
+               <Nav />
+               <Errorpage />
+               </React.Fragment>
+            )} />
             <Route render={() => (<Redirect to='/NotFound' />)} />
           </Switch>
         </div>
