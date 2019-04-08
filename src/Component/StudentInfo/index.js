@@ -12,13 +12,9 @@ class StudentInfo extends React.Component {
     repos_No :0 ,
     repo_url:[]
   }
-
   getstdnt = (x) => {
     return getStudents(x).then(res => res.json())
-      }
-  
-
-
+  }
   componentDidMount() {
     if (this.props.userInfo[0]) {
       const url = 'https://api.github.com/users/';
@@ -46,14 +42,13 @@ class StudentInfo extends React.Component {
     
       this.getstdnt(`${url}${info.login}/orgs/access_token=${process.env.REACT_APP_TOKEN }`).then(res => {
         let string = ':';
-        res.forEach( x => {
+        res.forEach(x => {
           string += `, ${x.login}`;
-         }) 
-        this.setState({organizations: string})
+        })
+        this.setState({ organizations: string })
       })
     }
   }
-
   render() {
     if (this.state.name && this.state.repos_No) {
       return (
