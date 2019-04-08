@@ -53,12 +53,15 @@ class StudentInfo extends React.Component {
     if (this.state.name && this.state.repos_No) {
       return (
         <div>
-          <h2>{this.state.name}</h2>
           <img src={this.state.avatar_url} alt='Student avatar' />
+          <h2>{this.state.name}</h2>
           <p>Followers {this.state.followers}</p>
           <p>Following {this.state.following}</p>
           <p>Organizations{this.state.organizations}</p>
           <p>Repos No. :{this.state.repos_No}</p>
+          <ul>
+          {this.state.repo_url.map((repo,index)=><li> Repo No {index}:{repo}</li>)}
+          </ul>
           
         </div>
       )
