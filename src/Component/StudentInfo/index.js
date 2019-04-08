@@ -6,15 +6,11 @@ class StudentInfo extends React.Component {
   state = {
     followers: 0,
     following: 0,
-    organizations:'',
+    organizations: '',
   }
-
   getstdnt = (x) => {
     return getStudents(x).then(res => res.json())
-      }
-  
-
-
+  }
   componentDidMount() {
     if (this.props.userInfo[0]) {
       const url = 'https://api.github.com/users/';
@@ -27,14 +23,13 @@ class StudentInfo extends React.Component {
       })
       this.getstdnt(`${url}${info.login}/orgs`).then(res => {
         let string = ':';
-        res.forEach( x => {
+        res.forEach(x => {
           string += `, ${x.login}`;
-         }) 
-        this.setState({organizations: string})
+        })
+        this.setState({ organizations: string })
       })
     }
   }
-
   render() {
     if (this.props.userInfo) {
       const { login, avatar_url, followers_url, following_url, organizations_url, repos_url, subscriptions_url, url } = this.props.userInfo;

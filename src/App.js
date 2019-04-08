@@ -18,7 +18,6 @@ class App extends Component {
     error: false,
   }
   componentDidMount() {
-    console.log('Token',token)
     getStudents(`https://api.github.com/orgs/facg6/members?access_token=${token}`)
       .then(res => res.json())
       .then(res => {
@@ -43,20 +42,17 @@ class App extends Component {
         if (res) {
           const result = res.filter((x) => {
             for (let i = 0; i < users.length; i++) {
-              if (x.login === users[i]) 
+              if (x.login === users[i])
                 return true;
             }
-          
           })
           this.setState({ studntsData: result })
         }
       })
       .catch(() => {
-        console.log(`Error, reload the page..`);
         return this.setState({ error: true });
       })
   }
-
   rnder = (rcevdId) => {
     this.setState({
       user: this.state.studntsData.map(user => {
@@ -72,14 +68,12 @@ class App extends Component {
     if (this.state.error) {
       this.setState({ error: false });
       return <Redirect to='/Errorpage' />;
+    }
+    else if (this.state.catch) {
+      return <Redirect to='/Errorpage' />;
+    }
   }
-  else if (this.state.catch){
-    return <Redirect to='/Errorpage' />;
-  }
-}
-
   render() {
-    console.log('app userInfo',this.state.user);
     if (!this.state.studntsData) {
       return <h3>Loading</h3>;
     }
@@ -105,7 +99,7 @@ class App extends Component {
                 </div>
               </React.Fragment>
             )} /><Route path='/NotFound' render={() => (
-                <h1>Page not found</h1>
+              <h1>Page not found</h1>
             )} />
             <Route path='/Errorpage' component={Errorpage} />
             <Route render={() => (<Redirect to='/NotFound' />)} />

@@ -1,13 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import getStudents from '../helpers/getStudent';
-
 import './style.css'
 
 class Student extends React.Component {
-  
- 
-  
   render() {
     const {login, id, avatar_url } = this.props
     return (
@@ -23,6 +18,7 @@ class Student extends React.Component {
     )
   }
 }
+
 export default Student;
 
 
