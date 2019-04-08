@@ -17,15 +17,14 @@ class StudentInfo extends React.Component {
     error: false
   }
   getstdnt = (x) => {
-    return getStudents(x).then(res => {
-      if (res === 'Error') {
-        this.setState({
-          error: true
-        })
-      } else {
-        return res.json();
+    return getStudents(x).then(res => 
+      {if(res == Error){
+      return;
       }
-    }
+      else{
+        return res.json()
+    }}
+    
     )
   }
   componentDidMount() {
@@ -58,33 +57,30 @@ class StudentInfo extends React.Component {
       })
 
       this.getstdnt(`${url}${info.login}/orgs/access_token=${process.env.REACT_APP_TOKEN }`).then(res => {
-      if (res)
-     { let string = ':';
-      res.forEach(x => {
-        string += `, ${x.login}`;
-      })
-      this.setState({ organizations: string })}
-      else this.setState({ organizations:'' })
-      
+        let string = ':';
+        if(res){
+        res.forEach(x => {
+          string += `, ${x.login}`;
+        })}
+        this.setState({ organizations: string })
       })
     }
   }
   render() {
-    if (!this.props.userInfo[0]) return <h3>click <Link to='/students'>here</Link> to select a Student..</h3>;
-
-    else if (this.state.name && this.state.repos_No) {
+    
+    if (this.state.name && this.state.repos_No) {
       return (
         <div className='card'>
-          <img className='studentImg' src={this.state.avatar_url} alt='Student avatar' />
-          <h2 className='studentName'>{this.state.name}</h2>
-          <p className='studentName'>Followers {this.state.followers}</p>
-          <p className='studentName'>Following {this.state.following}</p>
-          <p className='studentName'>Organizations{this.state.organizations}</p>
-          <p>Repos No. :{this.state.repos_No}</p>
-          <ul>
-            {this.state.repo_url.map((repo, index) => <li> Repo No {index}:{repo}</li>)}
-          </ul>
-        </div>
+        <img className='studentImg' src={this.state.avatar_url} alt='Student avatar' />
+        <h2 className='studentName'>{this.state.name}</h2>
+        <p className='studentName'>Followers {this.state.followers}</p>
+        <p className='studentName'>Following {this.state.following}</p>
+        <p className='studentName'>Organizations{this.state.organizations}</p>
+        <p>Repos No. :{this.state.repos_No}</p>
+        <ul>
+          {this.state.repo_url.map((repo, index) => <li> Repo No {index}:{repo}</li>)}
+        </ul>
+      </div>
       )
     } else if (this.state.error)
       return <Redirect to='/Errorpage' />

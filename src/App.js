@@ -58,8 +58,6 @@ class App extends Component {
       user: this.state.studntsData.map(user => {
         if (user.id === rcevdId) {
           return user;
-        } else {
-
         }
       }).filter(x => x),
     })
@@ -102,10 +100,10 @@ class App extends Component {
               <h1>Page not found</h1>
             )} />
             <Route path='/Errorpage' render={() => (
-               <React.Fragment>
-               <Nav />
-               <Errorpage />
-               </React.Fragment>
+              <React.Fragment>
+              <Nav />
+              <Errorpage />
+              </React.Fragment>
             )} />
             <Route render={() => (<Redirect to='/NotFound' />)} />
           </Switch>
