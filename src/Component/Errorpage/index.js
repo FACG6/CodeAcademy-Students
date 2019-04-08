@@ -4,7 +4,7 @@ class Errorpage extends  React.Component {
     render() {
         return (
             <div>
-                <p>Error, request failed, reload the page..</p>
+                <p>Error, request failed..</p>
             </div>
         )
     }

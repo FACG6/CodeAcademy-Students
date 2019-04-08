@@ -73,9 +73,13 @@ class App extends Component {
       this.setState({ error: false });
       return <Redirect to='/Errorpage' />;
   }
+  else if (this.state.catch){
+    return <Redirect to='/Errorpage' />;
+  }
 }
 
   render() {
+    console.log('app userInfo',this.state.user);
     if (!this.state.studntsData) {
       return <h3>Loading</h3>;
     }
@@ -100,9 +104,11 @@ class App extends Component {
                   <StudentInfo userInfo={this.state.user} />
                 </div>
               </React.Fragment>
+            )} /><Route path='/NotFound' render={() => (
+                <h1>Page not found</h1>
             )} />
             <Route path='/Errorpage' component={Errorpage} />
-            <Route render={() => (<Redirect to='/Errorpage' />)} />
+            <Route render={() => (<Redirect to='/NotFound' />)} />
           </Switch>
         </div>
       </Router>
